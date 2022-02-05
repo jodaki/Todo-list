@@ -4,12 +4,12 @@ let todos =localStorage.getItem("todos")
 
 
 // try parse date or null 
-try {
-    todos = JSON.parse(todos)
-    todos = todos.length ? todos : null
-} catch (e) {
-    todos = null
-}
+    try {
+        todos = JSON.parse(todos)
+        todos = todos.length ? todos : null
+    } catch (e) {
+        todos = null
+    }
 
 // data
 
@@ -24,8 +24,7 @@ try {
         localStorage.setItem("todos", JSON.stringify(todos))
     }
 
-
-    // great or update todos
+// great or update todos
     function GreateTodos(todo) {
         let todoslist = document.querySelector('#todos-list')
         todoslist.innerHTML = "" 
@@ -50,11 +49,28 @@ try {
                  localStorage.setItem("todos", JSON.stringify(todos))
                  GreateTodos(todo)
 
-             })
+            })
                                 
                
 
 
-            });
-     }
+        });
+    }
+    
+
+
+    // click and show text and button( save task, cancel)
+    let ButtonShowText = document.querySelector('#ButtonShowText')
+        ButtonShowText.addEventListener('click', e => {
+            document.querySelector('#TextShowText').classList.remove('d-none')
+            ButtonShowText.classList.add('d-none')
+        })
+    //hadin text and button and show button ( add tsks)
+    let cancelbutton = document.querySelector('#cancelbutton')
+        cancelbutton.addEventListener('click', e => {
+        document.querySelector('#TextShowText').classList.add('d-none')
+        ButtonShowText.classList.remove('d-none')
+        })
+
+
     GreateTodos(todos)
