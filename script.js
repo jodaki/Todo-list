@@ -15,10 +15,10 @@ let todos =localStorage.getItem("todos")
 
     if(!todos){
         todos =[
-            {content: 'text1', status: true},
-            {content: 'text2', status: true},
-            {content: 'text3', status: false},
-            {content: 'text4', status: true},
+            {content: 'text1',TextContent: 'texttttt',whach: "6:12" ,date: '4/3/99 ', status: false},
+            {content: 'text2',TextContent: 'texttttt',whach: '6:12' ,date: '4/3/99 ', status: false},
+            {content: 'text3',TextContent: 'texttttt',whach: '6:12' ,date: '4/3/99 ', status: true},
+            {content: 'text4',TextContent: 'texttttt',whach: '6:12' ,date: '4/3/99 ', status: true},
         ]   
         localStorage.setItem("todos", JSON.stringify(todos))
     }
@@ -33,6 +33,14 @@ let todos =localStorage.getItem("todos")
                //   // the div all
               let divFarther = document.createElement('div')
               divFarther.className = "border-bottom mt-1 pt-1"
+                //add date and whach
+                let divFartherb = document.createElement('button')
+                divFartherb.textContent = todo.whach
+                divFartherb.className = 'btn btn btn-link '
+
+                let divFartherc = document.createElement('button')
+                divFartherc.textContent = todo.date
+                divFartherc.className = ' btn  btn-link ms-2 '
 
               // the div row 
               let divrow = document.createElement('div')
@@ -45,9 +53,14 @@ let todos =localStorage.getItem("todos")
 
               // text contact
               let divB = document.createElement('span')
-              divB.className = "col-10 fs-6 text-break pt-2"
+              divB.className = "col-10 fs-6 text-break pt-2 "
               divB.textContent = todo.content
-              
+
+                // add text to tasks
+                let divBd = document.createElement('br')
+                let divBc = document.createElement('span')
+                    divBc.textContent = todo.TextContent
+                    divBc.classList = ' text-muted'
                 
                 
 
@@ -61,13 +74,21 @@ let todos =localStorage.getItem("todos")
               divrow.append(divA)
               divrow.append(divB)
               divrow.append(divC)
-            
-            
+              
+              
+                
+              divB.append(divBd)
+              divB.append(divBc)
+                
+                
               // row to append the divFather
               divFarther.append(divrow)
+
+              divFarther.append(divFartherb)
+              divFarther.append(divFartherc)
+              
               todoslist.append(divFarther)
-
-
+               
 
                  //todo and flase todo 
                 
@@ -75,6 +96,8 @@ let todos =localStorage.getItem("todos")
                     divB.classList.add('text-decoration-line-through', 'text-muted')
                     divA.classList.remove('bi-circle')
                     divA.classList.add('bi-check-circle-fill')
+                    divFartherb.classList.add('disabled')
+                    divFartherc.classList.add('disabled')
                 }  
         
                 divA.addEventListener('click', e=> {
@@ -93,18 +116,36 @@ let todos =localStorage.getItem("todos")
     }
     createTodos(todos)  
 
+   /////////add text//////////
 
 
-    //click and show text and button( save task, cancel)
-    let ButtonShowText = document.querySelector('#ButtonShowText')
-        ButtonShowText.addEventListener('click', e => {
-            document.querySelector('#TextShowText').classList.remove('d-none')
-            ButtonShowText.classList.add('d-none')
-        })
-    //hadin text and button and show button ( add tsks)
-    let cancelbutton = document.querySelector('#cancelbutton')
-        cancelbutton.addEventListener('click', e => {
-        document.querySelector('#TextShowText').classList.add('d-none')
-        ButtonShowText.classList.remove('d-none')
-        })
+   let add = document.querySelector('#add')
+   add.addEventListener('submit', e => {   
+       let textname = add.textname.value
+       if (add.name.value) {      
+         todos.push({content: add.name.value,TextContent: textname,whach: '00:00' ,date: '00/00/00',status: false})
+         
+         localStorage.setItem("todos", JSON.stringify(todos))
+          createTodos(todos)
+       }
+   })
 
+
+
+   // show fild add task to the tasks
+
+   let showfild = document.querySelector('#showfild')
+   
+   showfild.addEventListener('click', e=>{
+    ButtonShowText.classList.remove('d-none')
+    e.target.classList.add('d-none')
+    
+   })
+
+   // hadin filds and show button add tasks 
+   let deletetask = document.querySelector('#deletetask')
+   deletetask.addEventListener('click', e=>{
+    ButtonShowText.classList.add('d-none')
+    showfild.classList.remove('d-none')
+    
+   })
