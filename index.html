@@ -32,7 +32,9 @@
                     </div>
                     <div class="col-6"></div>
                     <div class="col-2">
-                            <button name="add-tasks" class="btn btn-light" data-action="add" style="background-color: #dc3545;  border: none; color: white;"><i class="bi bi-plus-lg" ></i></button>
+                            <button name="add-tasks" class="btn btn-light float-end" data-action="add" style="background-color: #dc3545;  border: none; color: white;">
+                                <i class="bi bi-plus-lg" ></i>
+                            </button>
                     </div>
                 </div>           
             </div>
@@ -43,7 +45,7 @@
     <div class="container">
         <div class="row" >
             <!-- left schein -->
-            <div class="col-4 bg-light" style="height: 850px;" >
+            <div class="col-sm-4 col-lg-4 col-md-4 bg-light" >
                 <div class="d-grid qap-4 mt-4">
                     <!-- search boox -->
                     <div class="text-white fs-5 mb-4"><input class="form-control " type="search" placeholder="Search" aria-label="Search"></div>
@@ -51,32 +53,22 @@
                    <div class="btn button-category mb-1">
                            <P class="float-start"><i class="bi bi-inbox me-2" style="color: #518BE2;"></i> Inbox</P>    
                     </div>
-                    <div class="btn  mb-1">
-                        <P class="float-start"><i class="bi bi-calendar2-check me-2" style="color: #518BE2;"></i> Today</P>    
-                    </div>
                 </div>    
             </div>
              <!-- right schein -->
-            <div class="col-8 p-4">
+            <div class="col-sm-8 col-lg-8 col-md-8 p-4">
                 <!-- hader tasks -->
                 <div class="fs-4 fw-bold pb-3 border-bottom">
                     inbox
                 </div>
                 <!--  tasks  -->
-                <div id="">
-                    <div class="border-bottom mt-1 pt-2 ">
-                        <div class="row">
-                            <div class="col-1">
-                                <i class="bi bi-circle" style="font-size: 20px;"></i>
-                            </div>
-                            <span class="col-10 fs-6">first tasks</span>
-                            
-                            <div class="col-1"><i class=" btnbi bi-trash-fill"></i><div class="btn">
-                                
-                            </div>
-                        </div>
-                    </div>        
-                </div>
+                <div id="todos-list">
+                    <div class="text-center p-2  bg-success ">     
+                            <span class="col-10 fs-6 text-break pb-3">
+                                loding....
+                            </span>
+                    </div>       
+                </div> 
                 <!-- <div>
                     <ul class="list-group">
                         <li>
@@ -97,17 +89,17 @@
                 <div class="d-none mb-3 mt-3" id="TextShowText">
                   <textarea class="form-control" name="" id="" rows="3" placeholder="Tasks name"></textarea>
                   <button class="btn btn- btn-success mt-2 btn-sm">
-                      save task
+                      SaveTask
                     </button>
                     <button class="btn btn-outline-secondary mt-2 btn-sm" id="cancelbutton">
-                        cancel
+                        Cancel
                       </button>
                 </div>
                
                 <!-- button add tasks -->
                 <button class="btn btn-outline-danger btn-sm mt-2" style="border: none;" id="ButtonShowText">
                     <i class="bi bi-plus-circle"></i>
-                      Add task
+                      AddTask
                     </button>
                 
             </div>
