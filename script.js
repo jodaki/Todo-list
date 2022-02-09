@@ -15,32 +15,25 @@ let todos =localStorage.getItem("todos")
 
     if(!todos){
         todos =[
-            {content: 'text1',TextContent: 'texttttt',whach: "6:12" ,date: '4/3/99 ', status: false},
-            {content: 'text2',TextContent: 'texttttt',whach: '6:12' ,date: '4/3/99 ', status: false},
-            {content: 'text3',TextContent: 'texttttt',whach: '6:12' ,date: '4/3/99 ', status: true},
-            {content: 'text4',TextContent: 'texttttt',whach: '6:12' ,date: '4/3/99 ', status: true},
+            {content: 'text1',TextContent: 'texttttt',DateClock: '2022-02-02Time11:31',color: 'text-warning',status: false}
         ]   
         localStorage.setItem("todos", JSON.stringify(todos))
     }
 
 // great or update todos
     function createTodos(todo) {
-        let todoslist = document.querySelector('#todos-list')
+        let todoslist = document.querySelector('#sortable')
         todoslist.innerHTML = "" 
         
         // greate list tag ech tag
             todos.forEach((todo, index)=> { 
                //   // the div all
               let divFarther = document.createElement('div')
-              divFarther.className = "border-bottom mt-1 pt-1"
+              divFarther.className = "border-bottom mt-1 pt-1 bg-white bg-body  p-1"
                 //add date and whach
                 let divFartherb = document.createElement('button')
-                divFartherb.textContent = todo.whach
-                divFartherb.className = 'btn btn btn-link '
-
-                let divFartherc = document.createElement('button')
-                divFartherc.textContent = todo.date
-                divFartherc.className = ' btn  btn-link ms-2 '
+                divFartherb.textContent = todo.DateClock
+                divFartherb.className = 'btn btn btn-link m-2 p-2 '
 
               // the div row 
               let divrow = document.createElement('div')
@@ -48,7 +41,7 @@ let todos =localStorage.getItem("todos")
 
               // the div for icon 
               let divA = document.createElement('i')
-              divA.className = "  btn col-1 bi bi-circle"
+              divA.className = ("btn col-1 bi bi-circle " + todo.color)
               
 
               // text contact
@@ -83,9 +76,10 @@ let todos =localStorage.getItem("todos")
                 
               // row to append the divFather
               divFarther.append(divrow)
-
+            
+              //tim task (clock and date)
               divFarther.append(divFartherb)
-              divFarther.append(divFartherc)
+            
               
               todoslist.append(divFarther)
                
@@ -94,10 +88,9 @@ let todos =localStorage.getItem("todos")
                 
                 if (todo.status) {
                     divB.classList.add('text-decoration-line-through', 'text-muted')
-                    divA.classList.remove('bi-circle')
-                    divA.classList.add('bi-check-circle-fill')
+                    divA.classList.remove('bi-circle', todo.color)
+                    divA.classList.add('bi-check-circle-fill', 'text-success')
                     divFartherb.classList.add('disabled')
-                    divFartherc.classList.add('disabled')
                 }  
         
                 divA.addEventListener('click', e=> {
@@ -116,20 +109,40 @@ let todos =localStorage.getItem("todos")
     }
     createTodos(todos)  
 
-   /////////add text//////////
+   /////////add todo//////////
 
 
    let add = document.querySelector('#add')
-   add.addEventListener('submit', e => {   
-       let textname = add.textname.value
-       if (add.name.value) {      
-         todos.push({content: add.name.value,TextContent: textname,whach: '00:00' ,date: '00/00/00',status: false})
-         
-         localStorage.setItem("todos", JSON.stringify(todos))
-          createTodos(todos)
-       }
-   })
-
+    add.addEventListener('submit', e => { 
+            //text contact  
+        let textname = add.textname.value
+        //time tasks
+        let datetime = add.datetime.value
+        //color
+        let colortask = add.color.value
+        
+        if (add.name.value) {      
+            todos.push({content: add.name.value,TextContent: textname,DateClock: datetime,color: colortask,status: false})
+            
+            localStorage.setItem("todos", JSON.stringify(todos))
+            createTodos(todos)
+        }
+        
+    })
+    
+      ///////// search todos and filter//////////
+        // let search = document.querySelector('#search')
+        //     search.addEventListener('keyup', e => { 
+        //     if (search.search.value) {  
+        //         var todofilter = todos.filter(
+        //             todo => todo.content.includes(search.search.value)
+        //         )
+        //         createTodos(todofilter)
+        //     }else{
+        //         createTodos(todos)
+        //     }
+            
+        //})
 
 
    // show fild add task to the tasks
@@ -149,3 +162,12 @@ let todos =localStorage.getItem("todos")
     showfild.classList.remove('d-none')
     
    })
+
+   //Jquery scroll
+   $( function() {
+    $( "#sortable" ).sortable({
+      placeholder: "ui-state-highlight"
+    });
+    $( "#sortable" ).disableSelection();
+  } );
+  

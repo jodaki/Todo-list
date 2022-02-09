@@ -4,7 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- jquery -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- my css -->
@@ -48,7 +50,9 @@
             <div class="col-sm-4 col-lg-4 col-md-4 bg-light" >
                 <div class="d-grid qap-4 mt-4">
                     <!-- search boox -->
-                    <div class="text-white fs-5 mb-4"><input class="form-control " type="search" placeholder="Search" aria-label="Search"></div>
+                    <!-- <form id="search">
+                        <input class="form-control" name="search" placeholder="Search todos ..">
+                    </form> -->
                     <!-- button  -->
                    <div class="btn button-category mb-1">
                            <P class="float-start"><i class="bi bi-inbox me-2" style="color: #518BE2;"></i> Inbox</P>    
@@ -62,7 +66,7 @@
                     inbox
                 </div>
                 <!--  tasks  -->
-                <div id="todos-list">
+                <div id="sortable">
                     <div class="text-center p-2  bg-success ">     
                             <span class="col-10 fs-6 text-break pb-3">
                                 loding....
@@ -86,7 +90,7 @@
                     </ul>
                 </div> -->
                 <!-- button add tasks  form-->
-                <div class="d-none mb-3 mt-3" id="ButtonShowText" >
+                <div class="d-none mb-3 mt-3 border p-4" id="ButtonShowText" >
                     <form id="add">
                         <div class="mb-1">
                             <div class="mb-2 mt-2">
@@ -96,10 +100,22 @@
                                     <!-- required -->
                             </div>
                             <div >
-                                
-                                <textarea type="text" name="textname" class="form-control" placeholder="a bute tasks ..... "
-                                    aria-label="a bute tasks ..... " ></textarea>
+                                <textarea type="text" name="textname" class="form-control" placeholder="a bute tasks ..... "aria-label="a bute tasks ..... " ></textarea>
                             </div>
+                            <!-- date and clock -->
+                            <div class="m-2">      
+                                    <input type="datetime-local" name="datetime" class="btn btn-sm m-2 "> 
+
+                                        <select class="btn btn-light m-2" name="color"rol>
+                                          <option class="text-warning" value="text-warning">Priority 1</option>
+                                          <option class="text-danger"  value="text-danger" >Priority 2</option>
+                                          <option class="text-primary"  value="text-primary">Priority 3</option>
+                                          <option  class="text-secondary" value="text-secondary">Priority 4</option>
+                                        </select>
+                                      
+                            </div>
+                            
+                            <!-- button form -->
                             <button type="submit" class="btn btn-primary btn-sm mt-2">Add tasks</button>
                             <button class="btn btn-outline-danger btn-sm mt-2" id="deletetask" style="border: none;">
                                 <i class="bi bi-trash"></i>
@@ -116,12 +132,14 @@
                     <i class="bi bi-plus-circle"></i>
                       AddTask
                     </button>
-                
             </div>
         </div>
         
     </div>
 
+    <!-- jquery script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
