@@ -1,7 +1,11 @@
 
 # Todo-list (local storage)
-## sava task to local storage
 
+## Possibilities
+- add task (name, component, date, time and Priority)
+- delete tasks
+- add Priority  to tasks (Priority  change the color taks(red, blue, yellow, black))
+- scroll the tasks to up and down
 
 
 ## seystems
